@@ -6,13 +6,23 @@ else
     review_year=$1
 fi
 
+default_branch="master"
+
 start_date="${review_year}-01-01 00:00"
 end_date="${review_year}-12-31 23:59"
 
 # git show <commit> --name-status
 # todo: figure out how to get the commits that are closest to input dates
-first_commit=(git rev-list -n 1 --after="${start_date}" master) # get first commit
-last_commit=(git rev-list -n 1 --reverse --before="${end_date}" master) # get last commit
+
+# git log --reverse --after="2022-01-01" --before="2022-12-31" master \| grep commit
+beginning_commits=(git log --reverse --after="${start_date}" --before="${end_date}" ${default_branch} \| grep commit)
+# git log --after="2022-01-01" --before="2022-12-31" master \| grep commit
+ending_commits=(git log --after="${start_date}" --before="${end_date}" ${default_branch} \| grep commit)
+
+first_commit=(echo "${beginning_commits}" \| head -n 1 \| cut -d' ' -f2-) # get first commit
+last_commit=(echo "${ending_commits}" \| head -n 1 \| cut -d' ' -f2-) # get last commit
+echo "First commit of year: ${first_commit}"
+echo "Last commit of year: ${last_commit}"
 
 all_files=(git diff ${first_commit} ${last_commit} --name-only) # get all files
 new_files=(git diff ${first_commit} ${last_commit} --name-status \| grep "A") # get added files - new code
