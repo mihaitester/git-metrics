@@ -2,6 +2,16 @@
 The idea would be to extract a summary over a specified period, say for example a year, and figure out how much new code was added vs. how much code was modified and changed.
 This can give a great insight into the direction of a software project.
 
+# Usage
+1. copy script to a repository
+2. open `git-bash`
+3. run `./git-bash.sh`
+>./git-bash.sh `year`
+- `year` - the year for which to find first commit and last commit, do a diff of the 2 commits, and then get some results regarding `maintenance` efforts involved - it is not 100% realistic, but representative enough to understand what is happening to a project
+
+# Similar projects
+* https://www.npmjs.com/package/git-metrics - seems similar, but did not understand what metrics it can extract
+
 # Docs
 * help: [ https://stackoverflow.com/questions/37311494/how-to-get-git-to-show-commits-in-a-specified-date-range-for-author-date ]
 * help: [ https://stackoverflow.com/questions/13370644/list-new-files-added-by-anyone-between-two-dates ]
@@ -11,5 +21,4 @@ This can give a great insight into the direction of a software project.
 * help: [ https://stackoverflow.com/questions/5188914/how-to-show-the-first-commit-by-git-log ] - get the very first commit of a repository
 * help: [ https://stackoverflow.com/questions/16136943/how-to-get-the-second-column-from-command-output ] - need to get the 2nd column
 
-# Similar projects
-* https://www.npmjs.com/package/git-metrics - seems similar, but did not understand what metrics it can extract
+
