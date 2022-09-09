@@ -9,6 +9,9 @@ This can give a great insight into the direction of a software project.
 >./git-bash.sh `year`
 - `year` - the year for which to find first commit and last commit, do a diff of the 2 commits, and then get some results regarding `maintenance` efforts involved - it is not 100% realistic, but representative enough to understand what is happening to a project
 
+# Progress
+![image](screenshot.PNG)
+
 # Similar projects
 * https://www.npmjs.com/package/git-metrics - seems similar, but did not understand what metrics it can extract
 
