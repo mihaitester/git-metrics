@@ -36,12 +36,24 @@ count_all_files=$(echo "${all_files}" | wc -l)
 count_new_files=$(echo "${new_files}" | wc -l)
 count_maintained_files=$(echo "${maintained_files}" | wc -l)
 
+# help: [ https://stackoverflow.com/questions/9468970/how-to-get-a-count-of-all-the-files-in-a-git-repository ]
+count_total_files=$(git ls-files | wc -l)
+# help: [ https://stackoverflow.com/questions/4822471/count-number-of-lines-in-a-git-repository ]
+count_total_lines=$(git grep ^ | wc -l)
+
+# help: [ https://stackoverflow.com/questions/2528111/how-can-i-calculate-the-number-of-lines-changed-between-two-commits-in-git ]
+git_status=$(git diff --stat ${first_commit} ${last_commit} | tail -n 1)
+
 echo "=========="
+echo "Project size in files: ${count_total_files}"
+echo "Project size in lines: ${count_total_lines}"
+echo "----------"
 echo "Year review: ${review_year}"
-echo "All files: ${count_all_files}"
 if ((${count_all_files} > 0)); then
+    echo "All files between dates: ${count_all_files}"
     echo "New files: ${count_new_files}"
     echo "Maintained files: ${count_maintained_files}"
-    echo "Maintenance percent: " $(( 100 * ${count_maintained_files} / ${count_all_files} ))"%"
+    echo "Maintenance percent: "$(( 100 * ${count_maintained_files} / ${count_all_files} ))" %"
+    echo "Git status: ${git_status}"
 fi
 echo "=========="

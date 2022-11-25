@@ -5,8 +5,8 @@ This can give a great insight into the direction of a software project.
 # Usage
 1. copy script to a repository
 2. open `git-bash`
-3. run `./git-bash.sh`
->./git-bash.sh `year`
+3. run `./git-metrics.sh`
+>./git-metrics.sh `year`
 - `year` - the year for which to find first commit and last commit, do a diff of the 2 commits, and then get some results regarding `maintenance` efforts involved - it is not 100% realistic, but representative enough to understand what is happening to a project
 
 # Progress
